@@ -50,6 +50,16 @@ def load_provinces():
         status = False
     return df, status 
 
+@st.cache_data
+def load_clusters():
+    try:
+        df = pd.read_csv(DATA_DIRECTORY / "hackathon" / "clusters.csv")
+        df.DAUID = df.DAUID.astype(str)
+        status = True
+    except:
+        df = pd.DataFrame()
+        status = False
+    return df, status 
 
 def load_stats():
     try:
